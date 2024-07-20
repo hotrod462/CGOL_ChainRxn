@@ -28,7 +28,7 @@ public class GridOverlay : MonoBehaviour
     {
         if(!lineMaterial)
         {
-            var shader = shader.Find("Hidden/Internal-Colored");
+            var shader = Shader.Find("Hidden/Internal-Colored");
             lineMaterial = new Material(shader);
 
             lineMaterial.hideFlags = HideFlags.HideAndDontSave;
