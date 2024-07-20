@@ -7,6 +7,7 @@ public class Game : MonoBehaviour
     private static int SCREEN_WIDTH = 64;
     private static int SCREEN_HEIGHT= 48;
 
+
     public float speed = 0.1f;
 
     private float timer = 0;
@@ -21,6 +22,7 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
       if (timer >= speed)
       {
         timer = 0f;
@@ -31,6 +33,8 @@ public class Game : MonoBehaviour
       else{
         timer += Time.deltaTime;
       }
+
+        
     }
 
     void PlaceCells()
@@ -45,6 +49,7 @@ public class Game : MonoBehaviour
             }
         }
     }
+
 
     void CountNeighbours()
     {
@@ -155,6 +160,7 @@ public class Game : MonoBehaviour
             }
         }
     }
+
 
     bool RandomAliveCell()
     {
