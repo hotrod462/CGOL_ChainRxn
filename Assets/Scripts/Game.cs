@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Xml.Serialization;
 
 public class Game : MonoBehaviour
 {
@@ -40,6 +42,41 @@ public class Game : MonoBehaviour
       }   
       UserInput();
     }
+
+    private void Savepattern()
+    {
+      string path = "patterns";
+      if(!Directory.Exists(path))
+      {
+        Directory.CreateDirectory(path);
+
+      }
+      Pattern pattern = new Pattern();
+      string patternString = null;
+      for (int y=0; y< SCREEN_HEIGHT; y++)
+      {
+        for(int x=0; x<SCREEN_WIDTH; x++)
+        {
+          if(grid[x,y].isAlive==false)
+          {
+            patternString += "0";
+          }
+          else
+          {
+            patternString += "1";
+
+          }
+        }
+      }
+      pattern.patternString = patternString;
+      XmlSerializer serializer = new XmlSerializer(typeof(Pattern));
+      StreamWriter writer = new StreamWriter(path + "/test.xml");
+      serializer.Serialize(writer.BaseStream, pattern);
+      writer.Close();
+
+      Debug.Log(pattern.patternString);
+    }
+
     void UserInput()
     {
       if(Input.GetMouseButtonDown(0))
@@ -68,8 +105,15 @@ public class Game : MonoBehaviour
 
 
       }
+      if(Input.GetKeyUp(KeyCode.S))
+      {
+        //-save pattern
+        Savepattern();
+      }
 
     }
+
+
 
 
 
