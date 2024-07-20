@@ -51,8 +51,8 @@ public class GridOverlay : MonoBehaviour
     {
         CreateLineMaterial();
 
-        lineMaterial.SetPass(0);
-        GL.Begin(GL.LINES);
+//         lineMaterial.SetPass(0);
+//         GL.Begin(GL.LINES);
 
         if(showSub)
         {
