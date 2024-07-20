@@ -14,13 +14,13 @@ public class GridOverlay : MonoBehaviour
 
     public float startX;
     public float startY;
-     public float startZ;
+    public float startZ;
 
-     public float smallStep;
-     public float largeStep;
+    public float smallStep;
+    public float largeStep;
 
-     public Colour mainColour = new Colour(0f, 1f, 0f, 1f);
-     public Colour subColour = new Colour(0f, 0.5f, 0f, 1f);
+    public Color mainColor = new Color(0f, 1f, 0f, 1f);
+    public Color subColor = new Color(0f, 0.5f, 0f, 1f);
 
 
 
@@ -40,7 +40,7 @@ public class GridOverlay : MonoBehaviour
             lineMaterial.SetInt("_ZWrite", 0);
 
             //-turn off backface culling
-            lineMaterial.SetInt("_Cull",(int)UnityEngine.Rendering.CulMode.Off);
+            lineMaterial.SetInt("_Cull",(int)UnityEngine.Rendering.CullMode.Off);
         }
     }
     private void OnDisable()
@@ -54,6 +54,37 @@ public class GridOverlay : MonoBehaviour
         lineMaterial.SetPass(0);
         GL.Begin(GL.LINES);
 
+        if(showSub)
+        {
+            GL.Color(subColor);
+            for(float y = 0; y<=gridSizeY; y+=smallStep)
+            {
+                GL.Vertex3(startX, startY+y,startZ);
+                GL.Vertex3(startX+gridSizeX, startY+y,startZ);
+            }
+            for(float x=0; x<=gridSizeX; x+=smallStep)
+            {
+              GL.Vertex3(startX+x, startY, startZ);
+              GL.Vertex3(startX+x, startY+gridSizeY, startZ);
+               
+            }
+        }
+        if(showMain)
+        {
+           GL.Color(mainColor);
+           for(float y = 0; y<=gridSizeY; y+=largeStep)
+            {
+                GL.Vertex3(startX, startY+y,startZ);
+                GL.Vertex3(startX+gridSizeX, startY+y,startZ);
+            }
+            for(float x=0; x<=gridSizeX; x+=largeStep)
+            {
+              GL.Vertex3(startX+x, startY, startZ);
+              GL.Vertex3(startX+x, startY+gridSizeY, startZ);
+               
+            }
+
+        }
         GL.End();
     }
 }
