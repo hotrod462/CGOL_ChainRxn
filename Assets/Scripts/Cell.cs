@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   public bool isAlive = false;
+   public int numNeighbours = 0;
 
-    // Update is called once per frame
-    void Update()
+   public void SetAlive(bool alive)
+   {
+    isAlive = alive;
+
+    if(alive)
     {
-        
+        GetComponent<SpriteRenderer>().enabled = true;
+
     }
+    else
+    {
+        GetComponent<SpriteRenderer>().enabled = false;
+    }
+   }
 }
