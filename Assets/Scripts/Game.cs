@@ -12,6 +12,8 @@ public class Game : MonoBehaviour
 
     private float timer = 0;
 
+    public bool simulationEnabled = false;
+
     Cell[,] grid = new Cell[SCREEN_WIDTH, SCREEN_HEIGHT];
     // Start is called before the first frame update
     void Start()
@@ -22,20 +24,55 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-      if (timer >= speed)
+      if(simulationEnabled)
       {
-        timer = 0f;
-        CountNeighbours ();
-        PopulationControl();
+        if (timer >= speed)
+        {
+          timer = 0f;
+          CountNeighbours ();
+          PopulationControl();
 
-      } 
-      else{
-        timer += Time.deltaTime;
+        } 
+        else
+        {
+          timer += Time.deltaTime;
+        }
+      }   
+      UserInput();
+    }
+    void UserInput()
+    {
+      if(Input.GetMouseButtonDown(0))
+      {
+        Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        int x= Mathf.RoundToInt(mousePoint.x);
+        int y= Mathf.RoundToInt(mousePoint.y);
+
+        if(x>=0 && y>=0 && x<SCREEN_WIDTH && y<SCREEN_HEIGHT)
+        {
+          //-We are in bounds
+          grid[x,y].SetAlive(!grid[x,y].isAlive);
+        }
+
+      }
+      if(Input.GetKeyUp(KeyCode.P))
+      {
+        //-Pause Simulation
+        simulationEnabled = false;
+      }
+      if(Input.GetKeyUp(KeyCode.B))
+      {
+        //-Build  simulation/ resume
+        simulationEnabled = true;
+
+
       }
 
-        
     }
+
+
+
 
     void PlaceCells()
     {
