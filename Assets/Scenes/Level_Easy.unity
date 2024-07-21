@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cellCountText: {fileID: 1034299928}
+  score: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

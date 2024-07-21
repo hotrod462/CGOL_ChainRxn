@@ -42,6 +42,9 @@ public class Level_Easy : MonoBehaviour
         }
       }   
       UserInput();
+      if(Savepattern()){
+          EndGame();
+        };
     }
     private void LoadPattern()
     {
@@ -497,7 +500,10 @@ public class Level_Easy : MonoBehaviour
         return false;
     }
     private void EndGame(){
-      SceneManager.LoadScene("EndScreen");
+      GameData.Instance.playerScore = CellPlacedCounter;
+
+        // Load the end screen scene
+        SceneManager.LoadScene("EndScene"); // Replace with your actual end screen scene name
     }
     
 }

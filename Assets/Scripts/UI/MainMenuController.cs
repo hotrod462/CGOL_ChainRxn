@@ -3,19 +3,27 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    private GameController gameController;
+
+    void Start()
+    {
+        // Find the GameController object in the scene
+        gameController = FindObjectOfType<GameController>();
+    }
+
     public void PlayLevel1()
     {
-        SceneManager.LoadScene("Level_Easy");
+        gameController.LoadScene("Level_Easy");
     }
 
     public void PlayLevel2()
     {
-        SceneManager.LoadScene("Level_Med");
+        gameController.LoadScene("Level_Med");
     }
 
     public void PlayLevel3()
     {
-        SceneManager.LoadScene("Level_Hard");
+        gameController.LoadScene("Level_Hard");
     }
 
     public void QuitGame()
