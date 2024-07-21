@@ -130,17 +130,10 @@ public class Level_Medium : MonoBehaviour
         
       }
       
-      if(Input.GetKeyUp(KeyCode.P))
+      if(Input.GetKeyUp(KeyCode.Space))
       {
         //-Pause Simulation
-        simulationEnabled = false;
-      }
-      if(Input.GetKeyUp(KeyCode.B))
-      {
-        //-Build  simulation/ resume
-        simulationEnabled = true;
-
-
+        simulationEnabled = !simulationEnabled;
       }
       if(Input.GetKeyUp(KeyCode.S))
       {

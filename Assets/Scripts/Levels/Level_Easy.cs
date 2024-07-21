@@ -130,18 +130,12 @@ public class Level_Easy : MonoBehaviour
         
       }
       
-      if(Input.GetKeyUp(KeyCode.P))
+      if(Input.GetKeyUp(KeyCode.Space))
       {
         //-Pause Simulation
-        simulationEnabled = false;
+        simulationEnabled = !simulationEnabled;
       }
-      if(Input.GetKeyUp(KeyCode.B))
-      {
-        //-Build  simulation/ resume
-        simulationEnabled = true;
-
-
-      }
+      
       if(Input.GetKeyUp(KeyCode.S))
       {
         //-save pattern
