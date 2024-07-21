@@ -4,7 +4,7 @@ using UnityEngine;
 using System.IO;
 using System.Xml.Serialization;
 
-public class Game : MonoBehaviour
+public class Level_Easy : MonoBehaviour
 {
     private static int SCREEN_WIDTH = 64;
     private static int SCREEN_HEIGHT= 48;
