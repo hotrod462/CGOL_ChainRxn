@@ -3,12 +3,12 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance;
+    public static UIManager Instance; // Singleton instance
     public Text cellCountText; // Reference to the UI Text element
 
     void Awake()
     {
-        // Singleton pattern to ensure only one instance exists
+        // Ensure only one instance of UIManager exists
         if (Instance == null)
         {
             Instance = this;
@@ -21,6 +21,6 @@ public class UIManager : MonoBehaviour
 
     public void UpdateCellCount(int count)
     {
-        cellCountText.text = "Cells Alive: " + count; // Update the UI text
+        cellCountText.text = "Cells Added: " + count; // Update the UI text
     }
 }
