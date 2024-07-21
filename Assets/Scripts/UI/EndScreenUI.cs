@@ -1,32 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class EndScreenUI : MonoBehaviour
-{      
-    // Start is called before the first frame update
-    public Text score_text;
-    public Text highscore_text;
-    public Text wintext;
-    
+public class EndScreen : MonoBehaviour
+{
+    public Text scoreText;
+
     void Start()
     {
-        wintext.text = "YOU WIN!!!";
-        if (UIManager.Instance != null)
-        {
-        int score = UIManager.Instance.score;
-        int highscore = 0;
-
-        score_text.text = "Score : " + score;
-        highscore_text.text = "Lowest score : " + highscore;
-        }
+        // Display the player's final score
+        scoreText.text = "Final Score: " + GameData.Instance.playerScore;
     }
 
-    // Update is called once per frame
-    void Restart()
+    public void RestartGame()
     {
-        SceneManager.LoadScene("MainMenu");
+        // Load the game scene to restart the game
+        FindObjectOfType<GameController>().LoadScene("GameScene");
+    }
+
+    public void MainMenu()
+    {
+        // Load the main menu scene
+        FindObjectOfType<GameController>().LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
+    {
+        // Quit the game application
+        Application.Quit();
     }
 }
