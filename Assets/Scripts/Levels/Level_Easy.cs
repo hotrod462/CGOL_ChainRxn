@@ -132,6 +132,7 @@ public class Game : MonoBehaviour
           CellPlacedCounter++;
           //grid[x,y].CellPlacedCounter = CellPlacedCounter;
           Debug.Log("Cell Placed Counter: " + CellPlacedCounter);
+          UIManager.Instance.UpdateCellCount(CellPlacedCounter); // Update UI
         }
         
       }
