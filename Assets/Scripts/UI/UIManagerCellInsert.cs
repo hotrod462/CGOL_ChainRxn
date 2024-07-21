@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance; // Singleton instance
     public Text cellCountText; // Reference to the UI Text element
-
+    public int score = 0;
     void Awake()
     {
         // Ensure only one instance of UIManager exists
@@ -22,5 +22,7 @@ public class UIManager : MonoBehaviour
     public void UpdateCellCount(int count)
     {
         cellCountText.text = "Cells Added: " + count; // Update the UI text
+        score = count;
+
     }
 }
