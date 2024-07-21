@@ -8,7 +8,7 @@ public class Game : MonoBehaviour
 {
     private static int SCREEN_WIDTH = 64;
     private static int SCREEN_HEIGHT= 48;
-
+    public int CellPlacedCounter = 0;
 
     public float speed = 0.1f;
 
@@ -116,8 +116,9 @@ public class Game : MonoBehaviour
 
     void UserInput()
     {
-      if(Input.GetMouseButtonDown(0))
+       if(Input.GetMouseButtonDown(0))
       {
+        
         Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         int x= Mathf.RoundToInt(mousePoint.x);
@@ -126,10 +127,15 @@ public class Game : MonoBehaviour
         if(x>=0 && y>=0 && x<SCREEN_WIDTH && y<SCREEN_HEIGHT)
         {
           //-We are in bounds
+          
           grid[x,y].SetAlive(!grid[x,y].isAlive);
+          CellPlacedCounter++;
+          //grid[x,y].CellPlacedCounter = CellPlacedCounter;
+          Debug.Log("Cell Placed Counter: " + CellPlacedCounter);
         }
-
+        
       }
+      
       if(Input.GetKeyUp(KeyCode.P))
       {
         //-Pause Simulation
