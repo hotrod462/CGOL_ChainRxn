@@ -17,6 +17,10 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene("Level_Hard");
     }
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
     public void QuitGame()
     {
