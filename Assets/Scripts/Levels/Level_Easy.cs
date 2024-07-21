@@ -31,7 +31,7 @@ public class Level_Easy : MonoBehaviour
         if (timer >= speed)
         {
           timer = 0f;
-          CountNeighbours ();
+          CountNeighbours();
           PopulationControl();
 
         } 
@@ -116,7 +116,7 @@ public class Level_Easy : MonoBehaviour
 
     void UserInput()
     {
-       if(Input.GetMouseButtonDown(0))
+       if(Input.GetMouseButtonDown(0)) //agar mouse button se input milta hai to 
       {
         
         Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -126,10 +126,10 @@ public class Level_Easy : MonoBehaviour
 
         if(x>=0 && y>=0 && x<SCREEN_WIDTH && y<SCREEN_HEIGHT)
         {
-          //-We are in bounds
+          //-We are in bounds yupp
           
-          grid[x,y].SetAlive(!grid[x,y].isAlive);
-          CellPlacedCounter++;
+          grid[x,y].SetAlive(!grid[x,y].isAlive,true);
+          if(!grid[x,y].locked){CellPlacedCounter++;}
           //grid[x,y].CellPlacedCounter = CellPlacedCounter;
           Debug.Log("Cell Placed Counter: " + CellPlacedCounter);
           UIManager.Instance.UpdateCellCount(CellPlacedCounter); // Update UI
@@ -176,7 +176,7 @@ public class Level_Easy : MonoBehaviour
                 {
                     Cell cell= Instantiate(Resources.Load("Prefabs/cell",typeof(Cell)), new Vector2(x,y), Quaternion.identity) as Cell;
                     grid[x,y] = cell;
-                    grid[x,y].SetAlive(false);
+                    grid[x,y].SetAlive(false); // initiate all the grid cells as black
                 }
             }
         if(type==1)
