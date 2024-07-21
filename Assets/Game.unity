@@ -152,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c924e08da9e2864f935cb4b3869d3fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  CellPlacedCounter: 0
+  speed: 1
   simulationEnabled: 0
 --- !u!4 &70387296
 Transform:
@@ -183,7 +184,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAlive: 0
   numNeighbours: 0
-  CellPlacedCounter: 0
 --- !u!1 &324356297
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,7 +315,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAlive: 0
   numNeighbours: 0
-  CellPlacedCounter: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
