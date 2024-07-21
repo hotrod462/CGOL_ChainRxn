@@ -222,7 +222,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -299,8 +299,8 @@ MonoBehaviour:
   startZ: 0
   smallStep: 1
   largeStep: 8
-  mainColor: {r: 0, g: 1, b: 0, a: 1}
-  subColor: {r: 0, g: 0.5, b: 0, a: 1}
+  mainColor: {r: 0.37500483, g: 0.42138356, b: 0.37500483, a: 1}
+  subColor: {r: 0.26254895, g: 0.2830189, b: 0.26254895, a: 1}
 --- !u!114 &324356302
 MonoBehaviour:
   m_ObjectHideFlags: 0
