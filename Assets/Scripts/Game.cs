@@ -198,10 +198,7 @@ public class Game : MonoBehaviour
                     }
                 }
 
-                Cell cell = Instantiate(Resources.Load("Prefabs/Cell", typeof(Cell)), new Vector2(x,y), Quaternion.identity) as Cell;
-                grid[x, y] = cell;
-                //grid[x, y].SetAlive(RandomAliveCell());
-                grid[x, y].SetAlive(false); // change 
+                
 
             }
         }
@@ -211,7 +208,7 @@ public class Game : MonoBehaviour
             {
                 for (int x=0; x<SCREEN_WIDTH; x++)
                 {
-                    Cell cell = Instantiate(Resources.Load("Prefabs/Cell", typeof(Cell)), new Vector2(x,y), Quaternion.identity) as Cell;
+                Cell cell = Instantiate(Resources.Load("Prefabs/Cell", typeof(Cell)), new Vector2(x,y), Quaternion.identity) as Cell;
                 grid[x, y] = cell;
                 grid[x, y].SetAlive(false);
                 }
