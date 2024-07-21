@@ -170,6 +170,7 @@ public class Game : MonoBehaviour
             //-that means ther is no true center so we will have to be offset 1 to the top or bottom 
             for(int y=0; y<SCREEN_HEIGHT; y++)
             {
+
                 for(int x=0;x<SCREEN_WIDTH; x++)
                 {
                     Cell cell= Instantiate(Resources.Load("Prefabs/cell",typeof(Cell)), new Vector2(x,y), Quaternion.identity) as Cell;
@@ -196,6 +197,12 @@ public class Game : MonoBehaviour
                         }
                     }
                 }
+
+                Cell cell = Instantiate(Resources.Load("Prefabs/Cell", typeof(Cell)), new Vector2(x,y), Quaternion.identity) as Cell;
+                grid[x, y] = cell;
+                //grid[x, y].SetAlive(RandomAliveCell());
+                grid[x, y].SetAlive(false); // change 
+
             }
         }
         else if(type == 2)
