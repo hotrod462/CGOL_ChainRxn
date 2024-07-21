@@ -1,16 +1,25 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public LevelManager levelManager;
-
-    public void StartGame()
+    public void PlayLevel1()
     {
-        levelManager.LoadLevel(0); // Load the first level
+        SceneManager.LoadScene("Level_Easy");
     }
 
-    public void NextLevel()
+    public void PlayLevel2()
     {
-        levelManager.LoadLevel(1); // Load the next level
+        SceneManager.LoadScene("Level_Med");
+    }
+
+    public void PlayLevel3()
+    {
+        SceneManager.LoadScene("Level_Hard");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
