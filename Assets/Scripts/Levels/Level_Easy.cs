@@ -20,7 +20,7 @@ public class Level_Easy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlaceCells(1);
+        PlaceCells(2);
     }
 
     // Update is called once per frame
@@ -169,13 +169,7 @@ public class Level_Easy : MonoBehaviour
 
     void PlaceCells(int type)
     {
-        if(type==1)
-        {
-            //-center width = 64/32
-            //-that means there is no true center so we will have to be offset 1 to the right or to the left
-            //center height= 48/2=24
-            //-that means ther is no true center so we will have to be offset 1 to the top or bottom 
-            for(int y=0; y<SCREEN_HEIGHT; y++)
+        for(int y=0; y<SCREEN_HEIGHT; y++)
             {
 
                 for(int x=0;x<SCREEN_WIDTH; x++)
@@ -185,6 +179,13 @@ public class Level_Easy : MonoBehaviour
                     grid[x,y].SetAlive(false);
                 }
             }
+        if(type==1)
+        {
+            //-center width = 64/32
+            //-that means there is no true center so we will have to be offset 1 to the right or to the left
+            //center height= 48/2=24
+            //-that means ther is no true center so we will have to be offset 1 to the top or bottom 
+           
             for (int y=21;y<24;y++)
             {
                 for(int x=0; x<32; x++)
@@ -209,18 +210,76 @@ public class Level_Easy : MonoBehaviour
 
             }
         }
-        else if(type == 2)
+        if(type == 2)
         {
-            for (int y=0; y<SCREEN_HEIGHT; y++)
-            {
-                for (int x=0; x<SCREEN_WIDTH; x++)
-                {
-                Cell cell = Instantiate(Resources.Load("Prefabs/Cell", typeof(Cell)), new Vector2(x,y), Quaternion.identity) as Cell;
-                grid[x, y] = cell;
-                grid[x, y].SetAlive(false);
-                }
-            } 
-        
+            grid[32,23].SetAlive(true);
+            grid[33,23].SetAlive(true);
+            grid[32,24].SetAlive(true);
+            grid[33,24].SetAlive(true);
+            grid[32,26].SetAlive(true);
+            grid[33,26].SetAlive(true);
+            grid[32,27].SetAlive(true);
+            grid[33,27].SetAlive(true);
+        }
+        if(type==3){
+            grid[32,25].SetAlive(true);
+            grid[32,26].SetAlive(true);
+            grid[32,23].SetAlive(true);
+            grid[32,22].SetAlive(true);
+            grid[32,28].SetAlive(true);
+            grid[32,29].SetAlive(true);
+            grid[32,30].SetAlive(true);
+            grid[32,31].SetAlive(true);
+            grid[32,17].SetAlive(true);
+            grid[32,18].SetAlive(true);
+            grid[32,19].SetAlive(true);
+            grid[32,20].SetAlive(true);
+            grid[33,29].SetAlive(true);
+            grid[33,19].SetAlive(true);
+            grid[34,29].SetAlive(true);
+            grid[34,19].SetAlive(true);
+            grid[35,25].SetAlive(true);
+            grid[35,23].SetAlive(true);
+            grid[36,24].SetAlive(true);
+            grid[37,24].SetAlive(true);
+            grid[31,24].SetAlive(true);
+            grid[31,26].SetAlive(true);
+            grid[31,31].SetAlive(true);
+            grid[31,32].SetAlive(true);
+            grid[31,22].SetAlive(true);
+            grid[31,17].SetAlive(true);
+            grid[31,16].SetAlive(true);
+            grid[30,24].SetAlive(true);
+            grid[30,33].SetAlive(true);
+            grid[30,27].SetAlive(true);
+            grid[30,15].SetAlive(true);
+            grid[30,21].SetAlive(true);
+            grid[29,26].SetAlive(true);
+            grid[29,27].SetAlive(true);
+            grid[29,28].SetAlive(true);
+            grid[29,31].SetAlive(true);
+            grid[29,32].SetAlive(true);
+            grid[29,22].SetAlive(true);
+            grid[29,21].SetAlive(true);
+            grid[29,20].SetAlive(true);
+            grid[29,17].SetAlive(true);
+            grid[29,16].SetAlive(true);
+            grid[28,26].SetAlive(true);
+            grid[28,29].SetAlive(true);
+            grid[28,22].SetAlive(true);
+            grid[28,19].SetAlive(true);
+            grid[27,27].SetAlive(true);
+            grid[27,29].SetAlive(true);
+            grid[27,21].SetAlive(true);
+            grid[27,19].SetAlive(true);
+            grid[26,27].SetAlive(true);
+            grid[26,29].SetAlive(true);
+            grid[26,21].SetAlive(true);
+            grid[26,19].SetAlive(true);
+        }
+        else if(type==3)
+        {
+            return;
         }
     }
 
