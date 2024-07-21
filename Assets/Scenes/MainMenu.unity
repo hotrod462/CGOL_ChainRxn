@@ -1123,10 +1123,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "RULES:\n1.Any live cell with 2 or 3 live neighbours survives \r\n2.Any
-    dead cell with 3 live miegbors becomes a live cell\r\n3.All other live cells
+    dead cell with 3 live neigbours becomes a live cell\r\n3.All other live cells
     die in the next generation and all other dead cells stay dead\n4. Your Objective
-    is to kill all alive cells on the game board in the minimum inserts possible\n5.
-    Lower Score is Better\n6. Press \"B\" to play and \"P\" to Pause"
+    is to kill all alive cells on the game board by adding minimum cells possible\n5.
+    Lower Score is Better\n6. Press Space to Play/Pause the simulation"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
