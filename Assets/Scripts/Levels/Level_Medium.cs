@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Xml.Serialization;
+using UnityEngine.SceneManagement;
 
 public class Level_Medium : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class Level_Medium : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlaceCells(3);
+        PlaceCells(2);
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class Level_Medium : MonoBehaviour
         if (timer >= speed)
         {
           timer = 0f;
-          CountNeighbours ();
+          CountNeighbours();
           PopulationControl();
 
         } 
@@ -80,8 +81,8 @@ public class Level_Medium : MonoBehaviour
             }
         }
     }
-    private void Savepattern()
-    {
+    private bool Savepattern()
+    { bool flag = true; //if empty then true
       string path = "patterns";
       if(!Directory.Exists(path))
       {
@@ -101,6 +102,7 @@ public class Level_Medium : MonoBehaviour
           else
           {
             patternString += "1";
+            flag = false;
 
           }
         }
@@ -112,11 +114,12 @@ public class Level_Medium : MonoBehaviour
       writer.Close();
 
       Debug.Log(pattern.patternString);
+      return flag;
     }
 
     void UserInput()
     {
-       if(Input.GetMouseButtonDown(0))
+       if(Input.GetMouseButtonDown(0)) //agar mouse button se input milta hai to 
       {
         
         Vector2 mousePoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -126,10 +129,10 @@ public class Level_Medium : MonoBehaviour
 
         if(x>=0 && y>=0 && x<SCREEN_WIDTH && y<SCREEN_HEIGHT)
         {
-          //-We are in bounds
+          //-We are in bounds yupp
           
-          grid[x,y].SetAlive(!grid[x,y].isAlive);
-          CellPlacedCounter++;
+          grid[x,y].SetAlive(!grid[x,y].isAlive,true);
+          if(!grid[x,y].locked){CellPlacedCounter++;}
           //grid[x,y].CellPlacedCounter = CellPlacedCounter;
           Debug.Log("Cell Placed Counter: " + CellPlacedCounter);
           UIManager.Instance.UpdateCellCount(CellPlacedCounter); // Update UI
@@ -152,7 +155,9 @@ public class Level_Medium : MonoBehaviour
       if(Input.GetKeyUp(KeyCode.S))
       {
         //-save pattern
-        Savepattern();
+        if(Savepattern()){
+          EndGame();
+        };
       }
       if(Input.GetKeyUp(KeyCode.L))
       {
@@ -161,11 +166,6 @@ public class Level_Medium : MonoBehaviour
       }
 
     }
-
-
-
-
-
 
     void PlaceCells(int type)
     {
@@ -176,7 +176,7 @@ public class Level_Medium : MonoBehaviour
                 {
                     Cell cell= Instantiate(Resources.Load("Prefabs/cell",typeof(Cell)), new Vector2(x,y), Quaternion.identity) as Cell;
                     grid[x,y] = cell;
-                    grid[x,y].SetAlive(false);
+                    grid[x,y].SetAlive(false); // initiate all the grid cells as black
                 }
             }
         if(type==1)
@@ -210,7 +210,7 @@ public class Level_Medium : MonoBehaviour
 
             }
         }
-        if(type == 2)
+        if(type == 3)
         {
             grid[32,23].SetAlive(true);
             grid[33,23].SetAlive(true);
@@ -221,7 +221,7 @@ public class Level_Medium : MonoBehaviour
             grid[32,27].SetAlive(true);
             grid[33,27].SetAlive(true);
         }
-        if(type==3){
+        if(type==2){
             grid[32,25].SetAlive(true);
             grid[32,26].SetAlive(true);
             grid[32,23].SetAlive(true);
@@ -276,10 +276,100 @@ public class Level_Medium : MonoBehaviour
             grid[26,29].SetAlive(true);
             grid[26,21].SetAlive(true);
             grid[26,19].SetAlive(true);
+                       
         }
-        else if(type==3)
+        else if(type==4)
         {
-            return;
+            grid[26,20].SetAlive(true);
+            grid[26,21].SetAlive(true);
+            grid[26,27].SetAlive(true);
+            grid[26,28].SetAlive(true);
+            grid[27,21].SetAlive(true);
+            grid[27,22].SetAlive(true);
+            grid[27,26].SetAlive(true);
+            grid[27,27].SetAlive(true);
+            grid[28,18].SetAlive(true);
+            grid[28,21].SetAlive(true);
+            grid[28,23].SetAlive(true);
+            grid[28,25].SetAlive(true);
+            grid[28,27].SetAlive(true);
+            grid[28,30].SetAlive(true);
+            grid[29,18].SetAlive(true);
+            grid[29,19].SetAlive(true);
+            grid[29,20].SetAlive(true);
+            grid[29,22].SetAlive(true);
+            grid[29,23].SetAlive(true);
+            grid[29,25].SetAlive(true);
+            grid[29,26].SetAlive(true);
+            grid[29,28].SetAlive(true);
+            grid[29,29].SetAlive(true);
+            grid[29,30].SetAlive(true);
+            grid[29,25].SetAlive(true);
+            grid[29,26].SetAlive(true);
+            grid[29,28].SetAlive(true);
+            grid[29,29].SetAlive(true);
+            grid[29,30].SetAlive(true);
+            grid[30,19].SetAlive(true);
+            grid[30,21].SetAlive(true);
+            grid[30,23].SetAlive(true);
+            grid[30,25].SetAlive(true);
+            grid[30,27].SetAlive(true);
+            grid[30,29].SetAlive(true);
+            grid[31,20].SetAlive(true);
+            grid[31,21].SetAlive(true);
+            grid[31,22].SetAlive(true);
+            grid[31,26].SetAlive(true);
+            grid[31,27].SetAlive(true);
+            grid[31,28].SetAlive(true);
+            grid[33,20].SetAlive(true);
+            grid[33,21].SetAlive(true);
+            grid[33,22].SetAlive(true);
+            grid[33,26].SetAlive(true);
+            grid[33,27].SetAlive(true);
+            grid[33,28].SetAlive(true);
+            grid[34,19].SetAlive(true);
+            grid[34,21].SetAlive(true);
+            grid[34,23].SetAlive(true);
+            grid[34,25].SetAlive(true);
+            grid[34,27].SetAlive(true);
+            grid[34,29].SetAlive(true);
+
+            grid[35,19].SetAlive(true);
+            grid[35,20].SetAlive(true);
+            grid[35,22].SetAlive(true);
+            grid[35,26].SetAlive(true);
+            grid[35,28].SetAlive(true);
+            grid[35,29].SetAlive(true);
+
+            grid[36,18].SetAlive(true);
+            grid[36,21].SetAlive(true);
+            grid[36,23].SetAlive(true);
+            grid[36,25].SetAlive(true);
+            grid[36,27].SetAlive(true);
+            grid[36,30].SetAlive(true);
+            
+            grid[37,17].SetAlive(true);
+            grid[37,21].SetAlive(true);
+            grid[37,22].SetAlive(true);
+            grid[37,24].SetAlive(true);
+            grid[37,26].SetAlive(true);
+            grid[37,27].SetAlive(true);
+            grid[37,31].SetAlive(true);
+            grid[38,16].SetAlive(true);
+            grid[38,18].SetAlive(true);
+            grid[38,20].SetAlive(true);
+            grid[38,21].SetAlive(true);
+            grid[38,23].SetAlive(true);
+            grid[38,25].SetAlive(true);
+            grid[38,27].SetAlive(true);
+            grid[38,28].SetAlive(true);
+            grid[38,30].SetAlive(true);
+            grid[38,32].SetAlive(true);
+            grid[39,22].SetAlive(true);
+            grid[39,26].SetAlive(true);
+            grid[40,23].SetAlive(true);
+            grid[40,24].SetAlive(true);
+            grid[40,25].SetAlive(true);
         }
     }
 
@@ -406,4 +496,8 @@ public class Level_Medium : MonoBehaviour
 
         return false;
     }
+    private void EndGame(){
+      SceneManager.LoadScene("EndScreen");
+    }
+    
 }
